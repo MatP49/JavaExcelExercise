@@ -1,11 +1,30 @@
-import org.apache.poi.ss.usermodel.*;
+import com.poiji.bind.Poiji;
+import com.poiji.exception.PoijiExcelType;
 
+import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.util.*;
+import java.io.InputStream;
+import java.util.List;
 
 
 public class Hello {
+
+    public static void main (String []args) throws Exception {
+        InputStream stream = new FileInputStream(new File("/home/spike/Desktop/matthis_example.xlsx"));
+        List<Client> employees = Poiji.fromExcel(stream, PoijiExcelType.XLS, Client.class);
+
+        System.out.println(employees.size());
+        Client firstEmployee = employees.get(2);
+        System.out.println(firstEmployee);
+
+    }
+
+
+
+
+
+
+    /*
 
     private static Workbook wb;
     private static Sheet sh;
@@ -38,16 +57,11 @@ public class Hello {
             clients = new HashMap();
 
         }
-
-
-
-
-
-
-
         System.out.println(myList);
         System.out.println("Done");
 
     }
+
+    */
     }
 
